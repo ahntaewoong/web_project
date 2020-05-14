@@ -1,8 +1,10 @@
 from django.http import JsonResponse
+import pickle
+
 def home(request):
-    name01 = request.GET['name']
-    age02 = request.GET['age']
-    requestDict = request.GET
-    result = int(age02) + 5
+    x1 = request.GET['x1']
+    x2 = request.GET['x2']
+    emp_pkl3 = pickle.load(open("./cal3.pkl", "rb"))
+    result = emp_pkl3.getTest(int(x1), int(x2))
     requestDict = {'result_response':result}
     return JsonResponse(requestDict)
